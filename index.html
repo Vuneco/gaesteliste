@@ -1,15 +1,26 @@
-<form action="DEINE_KOPIERTE_WEBAPP_URL_HIER" method="POST">
-    <label for="vorname">Vorname:</label><br>
-    <input type="text" id="vorname" name="vorname" required><br>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anmeldeformular</title>
+    </head>
+<body>
 
-    <label for="nachname">Nachname:</label><br>
-    <input type="text" id="nachname" name="nachname" required><br>
+    <h1>Anmeldung zur Gästeliste</h1>
 
-    <label for="anzahl">Anzahl:</label><br>
-    <input type="number" id="anzahl" name="anzahl" required><br><br>
+    <form id="guestForm" action="https://script.google.com/macros/s/AKfycbxg53XJnTaYblTnFK9bJZbYT7xoCOTEonx423jk-5c1IdlPXuVa4xgggSQmwCYHMIXjjg/exec" method="POST">
+        <label for="vorname">Vorname:</label><br>
+        <input type="text" id="vorname" name="vorname" required><br><br>
 
-    <button type="submit">Senden</button>
-</form>
-</script>
-</body>
+        <label for="nachname">Nachname:</label><br>
+        <input type="text" id="nachname" name="nachname" required><br><br>
+
+        <label for="anzahl">Anzahl der Personen:</label><br>
+        <input type="number" id="anzahl" name="anzahl" min="1" required><br><br>
+
+        <button type="submit">Jetzt anmelden</button>
+    </form>
+
+    </body>
 </html>
