@@ -25,30 +25,31 @@
   </div>
 
   <script>
-    const form = document.getElementById('anmeldungForm');
-    const danke = document.getElementById('danke');
+  const form = document.getElementById('anmeldungForm');
+  const danke = document.getElementById('danke');
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const data = new FormData(form);
-      const params = new URLSearchParams(data);
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const params = new URLSearchParams(data);
 
-      try {
-        const res = await fetch("https://script.google.com/macros/s/AKfycbxg53XJnTaYblTnFK9bJZbYT7xoCOTEonx423jk-5c1IdlPXuVa4xgggSQmwCYHMIXjjg/exec", {
-          method: "POST",
-          body: params
-        });
+    try {
+      const res = await fetch("https://script.google.com/macros/s/AKfycbyv1pDfUO-LkJKAm_F74t57HKsVCn1f_JMyW-bMM-EKX25Jr5qYXcCGS26BErQos2e_/exec", {
+        method: "POST",
+        body: params
+      });
 
-        if (res.ok) {
-          form.style.display = 'none';
-          danke.style.display = 'block';
-        } else {
-          alert("Fehler beim Speichern (Code: " + res.status + ")");
-        }
-      } catch (error) {
-        alert("Fehler beim Speichern: " + error.message);
+      if (res.ok) {
+        form.style.display = 'none';
+        danke.style.display = 'block';
+      } else {
+        alert("Fehler beim Speichern (Code: " + res.status + ")");
       }
-    });
-  </script>
+
+    } catch (error) {
+      alert("Fehler beim Speichern: " + error.message);
+    }
+  });
+</script>
 </body>
 </html>
