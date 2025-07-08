@@ -167,18 +167,16 @@
     }
 
 .position-wrapper {
-  position: relative; /* Damit das Bild sich daran orientiert */
-  width: 100%;
-  max-width: 900px;
+  display: flex;
+  justify-content: center;    /* horizontal zentriert */
+  align-items: flex-start;    /* von oben ausgerichtet */
+  gap: 40px;                  /* Abstand zwischen Bild und Container */
   margin-top: 60px;
+  flex-wrap: wrap;            /* für mobile Geräte */
 }
 
 .floating-image {
-  position: absolute;
-  top: 100px;          /* Abstand von oben */
-  left: -180px;      /* Abstand vom rechten Rand des Containers */
-  bottom: 100px;       /* Abstand von unten (optional, wirkt nur wenn height gesetzt ist) */
-  width: 280px;
+   width: 280px;
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
