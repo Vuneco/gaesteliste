@@ -180,6 +180,17 @@
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
+
+    @media (max-width: 480px) {
+  input, select, button {
+    font-size: 16px;
+    width: 100%;
+  }
+
+  label {
+    font-size: 15px;
+  }
+}
     
   </style>
 </head>
@@ -204,37 +215,32 @@
       <input type="text" name="vorname" placeholder="Vorname" required style="flex: 1;" />
       <input type="text" name="nachname" placeholder="Nachname" required style="flex: 1;" />
     </div>
-    
 
-    <!-- E-Mail, Abiturjahrgang (Dropdown), Anzahl nebeneinander -->
+
 <!-- E-Mail, Abiturjahrgang, Anzahl untereinander -->
 <div style="display: flex; flex-direction: column; gap: 10px;">
-  <input type="email" name="email" placeholder="E-Mail" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #800000; font-size: 16px; color: #555;">
+  <input type="email" name="email" placeholder="E-Mail" required />
 
-  <select name="abitur" required style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #800000; font-size: 16px; color: #555;">
+  <select name="abitur" required>
     <option value="" disabled selected>Abiturjahrgang</option>
     <option value="2024">2024</option>
     <option value="2025">2025</option>
     <option value="2026">2026</option>
-    <!-- Weitere Jahrgänge -->
   </select>
 
-  <input type="number" name="anzahl" placeholder="Anzahl Personen" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #800000; font-size: 16px; color: #555;">
+  <input type="number" name="anzahl" placeholder="Anzahl Gäste" required />
 </div>
 
 <!-- Auswahl: Ich bin -->
 <div style="margin-top: 20px;">
   <label style="font-weight: bold;">Ich bin:</label>
   <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
-    <label style="display: flex; align-items: center; gap: 10px;">
-      <input type="radio" name="rolle" value="Schüler/in" required>
-      Schüler/in
-    </label>
-    <label style="display: flex; align-items: center; gap: 10px;">
-      <input type="radio" name="rolle" value="Lehrkraft / Personal" required>
-      Lehrkraft / Personal
-    </label>
+    <label><input type="radio" name="rolle" value="Schüler/in" required /> Schüler/in</label>
+    <label><input type="radio" name="rolle" value="Lehrkraft / Personal" required /> Lehrkraft / Personal</label>
   </div>
+</div>
+
+  <input type="number" name="anzahl" placeholder="Anzahl Personen" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #800000; font-size: 16px; color: #555;">
 </div>
 
     <!-- Hinweis -->
