@@ -196,17 +196,36 @@
   </div>
   
   <div class="container">
-    <h2 class="bordeaux">Jetzt zur Veranstaltung anmelden</h2>
-    <form id="guestForm" action="https://script.google.com/macros/s/AKfycbzPeTRjiyOunan2xg5cgWZSpW9aM49RfdCJJu_kqLsj0Hd0fJTOZ9m6NZ_NZFwAWbw/exec" method="POST">
-      <input type="text" name="vorname" placeholder="Vorname" required />
-      <input type="text" name="nachname" placeholder="Nachname" required />
-      <input type="number" name="anzahl" placeholder="Anzahl der Personen" min="1" required />
-      <p style="font-size: 12px; color: #555; margin-top: 10px; margin-bottom: 0;">
-    Wenn Sie auf „Jetzt anmelden“ tippen, erklären Sie sich damit einverstanden, dass Ihre Daten in die Gästeliste des St. Michael Gymnasiums gespeichert werden.
-  </p>
-      <button type="submit">Jetzt anmelden</button>
-    </form>
-  </div>
+  <h2 class="bordeaux">Jetzt zur Veranstaltung anmelden</h2>
+  <form id="guestForm" action="https://script.google.com/macros/s/AKfycbzPeTRjiyOunan2xg5cgWZSpW9aM49RfdCJJu_kqLsj0Hd0fJTOZ9m6NZ_NZFwAWbw/exec" method="POST">
+    
+    <input type="text" name="vorname" placeholder="Vorname" required />
+    <input type="text" name="nachname" placeholder="Nachname" required />
+    <input type="number" name="anzahl" placeholder="Anzahl der Personen" min="1" required />
+    <input type="email" name="email" placeholder="E-Mail-Adresse" required />
+    <input type="number" name="abitur" placeholder="Abiturjahrgang (z. B. 2025)" min="1900" max="2100" required />
+
+    <select name="auswahl" required>
+      <option value="" disabled selected>Was trifft auf Sie zu?</option>
+      <option value="Teilnahme am Galaabend">Teilnahme am Galaabend</option>
+      <option value="Besuch am Tag der offenen Tür">Besuch am Tag der offenen Tür</option>
+      <option value="Beides">Beides</option>
+    </select>
+
+    <div style="text-align: left; margin-top: 10px; font-size: 15px;">
+      <strong>Ich bin:</strong><br>
+      <label><input type="radio" name="rolle" value="Schüler/in" required /> Schüler/in</label><br>
+      <label><input type="radio" name="rolle" value="Lehrkraft / Personal" required /> Lehrkraft / Personal</label>
+    </div>
+
+    <p style="font-size: 12px; color: #555; margin-top: 16px; margin-bottom: 0;">
+      Wenn Sie auf „Jetzt anmelden“ tippen, erklären Sie sich damit einverstanden, dass Ihre Daten in die Gästeliste des St. Michael Gymnasiums gespeichert werden.
+    </p>
+    
+    <button type="submit">Jetzt anmelden</button>
+  </form>
+</div>
+
 
     
 
