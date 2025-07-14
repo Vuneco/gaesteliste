@@ -191,6 +191,14 @@
     font-size: 15px;
   }
 }
+    .fade-out {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.95); }
+}
     
   </style>
 </head>
@@ -346,9 +354,15 @@ form.addEventListener("submit", async function (e) {
 });
 
 cancelCheck.addEventListener("click", () => {
-  overlay.style.display = "none";
-  checkPopup.style.display = "none";
+  checkPopup.classList.add("fade-out");
+
+  setTimeout(() => {
+    checkPopup.style.display = "none";
+    checkPopup.classList.remove("fade-out");
+    overlay.style.display = "none";
+  }, 300); // muss zur Dauer der Animation passen
 });
+
 
 confirmCheck.addEventListener("click", () => {
   checkPopup.style.display = "none";
