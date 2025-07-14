@@ -353,15 +353,18 @@ form.addEventListener("submit", async function (e) {
   }
 });
 
-cancelCheck.addEventListener("click", () => {
+
+    cancelCheck.addEventListener("click", () => {
   checkPopup.classList.add("fade-out");
 
   setTimeout(() => {
     checkPopup.style.display = "none";
     checkPopup.classList.remove("fade-out");
     overlay.style.display = "none";
-  }, 300); // muss zur Dauer der Animation passen
+    isConfirmed = false; // ← das ist der Schlüssel!
+  }, 600);
 });
+
 
 
 confirmCheck.addEventListener("click", () => {
