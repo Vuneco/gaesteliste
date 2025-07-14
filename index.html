@@ -1,328 +1,131 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Anmeldung zur Gästeliste Schuljubiläums Gala 2025</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Veranstaltungsanmeldung</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 0;
+      background: #fff;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
+      padding: 40px 10px;
     }
-
-    .school-contact {
-  margin-top: 50px;
-  text-align: center;
-  font-size: 16px;
-  color: #800000;
-  line-height: 1.6;
-  padding: 0 20px;
-}
-
-.school-contact h3 {
-  margin-bottom: 10px;
-  font-size: 20px;
-  color: #800000;
-}
 
     .container {
-      background: white;
-      padding: 40px;
+      border: 2px solid #800020;
       border-radius: 12px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      width: 100%;
+      padding: 30px 20px;
       max-width: 400px;
-      margin-top: 60px;
-      border: 2px solid #800000;
+      width: 100%;
     }
 
-    input, button {
+    h2 {
+      text-align: center;
+      color: #800020;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    input, select {
       width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      font-size: 16px;
+      padding: 10px;
+      border: 2px solid #ccc;
       border-radius: 6px;
-      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    select[name="abitur"] {
+      border-color: #800020;
+    }
+
+    .radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 5px;
+    }
+
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .radio-option input[type="radio"] {
+      accent-color: #800020;
+    }
+
+    .disclaimer {
+      font-size: 12px;
+      color: #555;
+      margin-top: 15px;
+      text-align: center;
     }
 
     button {
-  background-color: #800000; /* Bordeauxrot */
-  color: white;              /* Schrift bleibt weiß */
-  padding: 12px 20px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
+      background-color: #800020;
+      color: white;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
 
     button:hover {
-  background-color: #5a0000; /* dunkleres Bordeaux bei Hover */
-}
-
-
-    #confirmation {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  border: 2px solid #800000;
-  padding: 30px;
-  box-shadow: 0 0 30px rgba(0,0,0,0.3);
-  z-index: 1000;
-  width: 90%;
-  max-width: 450px;
-  text-align: center;
-  border-radius: 12px;
-}
-
-
-    #confirmation p {
-      font-size: 18px;
-      line-height: 1.5;
-      margin: 0 0 20px 0;
+      background-color: #a32030;
     }
-
-    #confirmation small {
-      font-size: 12px;
-      color: #888;
-      display: block;
-      margin-top: 12px;
-    }
-
-    #confirmation img {
-  width: 60px;
-  height: auto;
-  margin-top: 10px;
-  opacity: 0.6;
-}
-    #overlay {
-  display: none;
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0, 0, 0, 0.3); /* halbtransparent */
-  z-index: 999;
-}
-
-    .image-row {
-      margin-top: 40px;
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-      flex-wrap: wrap;
-      max-width: 800px;
-    }
-
-    .image-row img {
-      height: 100px;
-      border-radius: 10px;
-      object-fit: cover;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-    .bordeaux {
-  color: #800000; /* Bordeaux-Rot */
-}
-
-    footer {
-      background-color: #fff;
-      width: 100%;
-      max-width: 600px;
-      padding: 15px 20px;
-      margin-top: 40px;
-      box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.05);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 1px solid #ddd;
-    }
-
-    footer span {
-      font-size: 14px;
-      color: #444;
-    }
-
-    footer img {
-  height: 50px;
-  width: auto;
-}
-
-
-    @media (max-width: 480px) {
-      .container {
-        margin-top: 30px;
-        padding: 30px 20px;
-      }
-    }
-
-.position-wrapper {
-  display: flex;
-  justify-content: center;    /* horizontal zentriert */
-  align-items: flex-start;    /* von oben ausgerichtet */
-  gap: 40px;                  /* Abstand zwischen Bild und Container */
-  margin-top: 60px;
-  flex-wrap: wrap;            /* für mobile Geräte */
-}
-
-.floating-image {
-   width: 280px;
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-    @media (max-width: 480px) {
-  input, select, button {
-    font-size: 16px;
-    width: 100%;
-  }
-
-  label {
-    font-size: 15px;
-  }
-}
-    
   </style>
 </head>
 <body>
-<div id="overlay"></div>
+  <form class="container" method="POST" action="DEIN_SCRIPT_URL_HIER_EINFÜGEN">
+    <h2>Jetzt zur Veranstaltung anmelden</h2>
 
-  <div id="confirmation">
-    <p>
-      Das St. Michael Gymnasium bedankt sich für Ihre Teilnahme.<br>
-      Wir freuen uns auf Ihren Besuch.
-    </p>
-    <small>Software Powered by Vuneco GmbH</small>
-    <img src="assets/VunecoBlackLogo512.png" alt="Vuneco Logo">
-  </div>
-  
-  <div class="container">
-  <h2 class="bordeaux">Jetzt zur Veranstaltung anmelden</h2>
-  <form id="guestForm" action="https://script.google.com/macros/s/AKfycbzPeTRjiyOunan2xg5cgWZSpW9aM49RfdCJJu_kqLsj0Hd0fJTOZ9m6NZ_NZFwAWbw/exec" method="POST">
-
-    <!-- Vorname & Nachname nebeneinander -->
-    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-      <input type="text" name="vorname" placeholder="Vorname" required style="flex: 1;" />
-      <input type="text" name="nachname" placeholder="Nachname" required style="flex: 1;" />
+    <div class="form-group">
+      <input type="text" name="vorname" placeholder="Vorname" required>
+    </div>
+    <div class="form-group">
+      <input type="text" name="nachname" placeholder="Nachname" required>
+    </div>
+    <div class="form-group">
+      <input type="email" name="email" placeholder="E-Mail" required>
+    </div>
+    <div class="form-group">
+      <select name="abitur" required>
+        <option value="" disabled selected>Abiturjahrgang</option>
+        <option value="2023">2023</option>
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+        <option value="2026">2026</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <input type="number" name="anzahl" placeholder="Anzahl Gäste" min="0" required>
+    </div>
+    <div class="form-group">
+      <label>Ich bin:</label>
+      <div class="radio-group">
+        <label class="radio-option">
+          <input type="radio" name="rolle" value="Schüler/in" required> Schüler/in
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="rolle" value="Lehrkraft / Personal"> Lehrkraft / Personal
+        </label>
+      </div>
     </div>
 
-
-<!-- E-Mail, Abiturjahrgang, Anzahl untereinander -->
-<div style="display: flex; flex-direction: column; gap: 10px;">
-  <input type="email" name="email" placeholder="E-Mail" required />
-
-  <select name="abitur" required placeholder="Abiturjahrgang" style="
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 2px solid #800020;
-  border-radius: 8px;
-  background-color: #fff;
-  color: #333;
-">
-  <option value="" disabled selected hidden>Abiturjahrgang</option>
-  <option value="2024">2024</option>
-  <option value="2025">2025</option>
-  <option value="2026">2026</option>
-  <option value="2027">2027</option>
-</select>
-
-<!-- Auswahl: Ich bin -->
-<div style="margin-top: 20px;">
-  <label style="font-weight: bold;">Ich bin:</label>
-  <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
-    <label><input type="radio" name="rolle" value="Schüler/in" required /> Schüler/in</label>
-    <label><input type="radio" name="rolle" value="Lehrkraft / Personal" required /> Lehrkraft / Personal</label>
-  </div>
-</div>
-
-  <input type="number" name="anzahl" placeholder="Anzahl Personen" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #800000; font-size: 16px; color: #555;">
-</div>
-
-    <!-- Hinweis -->
-    <p style="font-size: 12px; color: #555; margin-top: 16px; margin-bottom: 0;">
-      Wenn Sie auf „Jetzt anmelden“ tippen, erklären Sie sich damit einverstanden, dass Ihre Daten in die Gästeliste des St. Michael Gymnasiums gespeichert werden.
+    <p class="disclaimer">
+      Wenn Sie auf „Jetzt anmelden“ tippen, erklären Sie sich damit einverstanden,<br>
+      dass Ihre Daten in die Gästeliste des St. Michael Gymnasiums gespeichert werden.
     </p>
 
-    <!-- Button -->
     <button type="submit">Jetzt anmelden</button>
   </form>
-</div>
-    
-
-  <div class="image-row">
-    <img src="assets/logo_alt.png" alt="Schulbild 1" />
-    <img src="assets/stmg.jpeg" alt="Seitenbild"  />
-    </div>
-
-  
-  <div style="display: flex; justify-content: space-between; align-items: center; gap: 20px; max-width: 800px; margin-top: 40px;">
-  <div class="school-contact">
-    ...
-  
-
-  <div class="school-contact">
-  <h3>Kontakt</h3>
-  <p>
-    St. Michael Gymnasium<br>
-    Markt 11<br>
-    53902 Bad Münstereifel<br>
-    Tel.: 02253 /9213-0 <br>
-    E-Mail: kontakt@stmg.de
-  </p>
-</div>
-
-
-  <footer>
-    <span>Software Powered by Vuneco GmbH</span>
-    <img src="assets/VunecoBlackLogo512.png" alt="Vuneco Logo">
-  </footer>
-
-  <script>
-    const form = document.getElementById("guestForm");
-const container = document.querySelector(".container");
-const confirmation = document.getElementById("confirmation");
-const overlay = document.getElementById("overlay");
-
-form.addEventListener('submit', async function (e) {
-  e.preventDefault();
-  const formData = new FormData(form);
-
-  try {
-    const response = await fetch(form.action, {
-      method: 'POST',
-      body: formData,
-    });
-
-    if (response.ok) {
-      form.reset();
-      container.style.opacity = '0.3';
-      overlay.style.display = 'block';
-      confirmation.style.display = 'block';
-
-      setTimeout(() => {
-        confirmation.style.display = 'none';
-        overlay.style.display = 'none';
-        container.style.opacity = '1';
-      }, 10000);
-    } else {
-      alert('Fehler beim Speichern. Bitte erneut versuchen.');
-    }
-  } catch (error) {
-    alert('Verbindung fehlgeschlagen: ' + error.message);
-  }
-});
-  </script>
 </body>
 </html>
-
