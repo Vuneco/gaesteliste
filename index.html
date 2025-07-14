@@ -317,13 +317,38 @@ const confirmCheck = document.getElementById("confirmCheck");
 
 let isConfirmed = false;
 
-form.addEventListener("submit", async function (e) {
-  if (!isConfirmed) {
-    e.preventDefault();
-    overlay.style.display = "block";
-    checkPopup.style.display = "block";
-    return;
+async function actuallySubmitForm() {
+  const formData = new FormData(form);
+
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (response.ok) {
+      form.reset();
+      container.style.opacity = '0.3';
+      confirmation.style.display = 'block';
+
+      setTimeout(() => {
+        confirmation.style.display = 'none';
+        overlay.style.display = 'none';
+        container.style.opacity = '1';
+      }, 10000);
+    } else {
+      alert('Fehler beim Speichern. Bitte erneut versuchen.');
+    }
+  } catch (error) {
+    alert('Verbindung fehlgeschlagen: ' + error.message);
   }
+}
+    
+  form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  overlay.style.display = "block";
+  checkPopup.style.display = "block";
+});
 
   e.preventDefault();
   const formData = new FormData(form);
@@ -353,7 +378,6 @@ form.addEventListener("submit", async function (e) {
   }
 });
 
-
     cancelCheck.addEventListener("click", () => {
   checkPopup.classList.add("fade-out");
 
@@ -361,16 +385,13 @@ form.addEventListener("submit", async function (e) {
     checkPopup.style.display = "none";
     checkPopup.classList.remove("fade-out");
     overlay.style.display = "none";
-    isConfirmed = false; // ← das ist der Schlüssel!
-  }, 600);
+  }, 300);
 });
-
-
 
 confirmCheck.addEventListener("click", () => {
   checkPopup.style.display = "none";
-  isConfirmed = true;
-  form.requestSubmit(); // jetzt wirklich absenden
+  overlay.style.display = "block"; // bleibt aktiv beim Absenden
+  actuallySubmitForm(); // ruft die echte Submission-Funktion auf
 });
 
   </script>
