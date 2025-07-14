@@ -350,34 +350,6 @@ async function actuallySubmitForm() {
   checkPopup.style.display = "block";
 });
 
-  e.preventDefault();
-  const formData = new FormData(form);
-
-  try {
-    const response = await fetch(form.action, {
-      method: 'POST',
-      body: formData,
-    });
-
-    if (response.ok) {
-      form.reset();
-      container.style.opacity = '0.3';
-      confirmation.style.display = 'block';
-
-      setTimeout(() => {
-        confirmation.style.display = 'none';
-        overlay.style.display = 'none';
-        container.style.opacity = '1';
-        isConfirmed = false;
-      }, 10000);
-    } else {
-      alert('Fehler beim Speichern. Bitte erneut versuchen.');
-    }
-  } catch (error) {
-    alert('Verbindung fehlgeschlagen: ' + error.message);
-  }
-});
-
     cancelCheck.addEventListener("click", () => {
   checkPopup.classList.add("fade-out");
 
