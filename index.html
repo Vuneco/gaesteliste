@@ -221,12 +221,21 @@
 <div style="display: flex; flex-direction: column; gap: 10px;">
   <input type="email" name="email" placeholder="E-Mail" required />
 
-  <select name="abitur" required>
-    <option value="" disabled selected>Abiturjahrgang</option>
-    <option value="2024">2024</option>
-    <option value="2025">2025</option>
-    <option value="2026">2026</option>
-  </select>
+  <select name="abitur" required placeholder="Abiturjahrgang" style="
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #800020;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #333;
+">
+  <option value="" disabled selected hidden>Abiturjahrgang</option>
+  <option value="2024">2024</option>
+  <option value="2025">2025</option>
+  <option value="2026">2026</option>
+  <option value="2027">2027</option>
+</select>
 
 <!-- Auswahl: Ich bin -->
 <div style="margin-top: 20px;">
