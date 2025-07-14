@@ -303,8 +303,20 @@
 const container = document.querySelector(".container");
 const confirmation = document.getElementById("confirmation");
 const overlay = document.getElementById("overlay");
+const checkPopup = document.getElementById("checkPopup");
+const cancelCheck = document.getElementById("cancelCheck");
+const confirmCheck = document.getElementById("confirmCheck");
 
-form.addEventListener('submit', async function (e) {
+let isConfirmed = false;
+
+form.addEventListener("submit", async function (e) {
+  if (!isConfirmed) {
+    e.preventDefault();
+    overlay.style.display = "block";
+    checkPopup.style.display = "block";
+    return;
+  }
+
   e.preventDefault();
   const formData = new FormData(form);
 
@@ -317,13 +329,13 @@ form.addEventListener('submit', async function (e) {
     if (response.ok) {
       form.reset();
       container.style.opacity = '0.3';
-      overlay.style.display = 'block';
       confirmation.style.display = 'block';
 
       setTimeout(() => {
         confirmation.style.display = 'none';
         overlay.style.display = 'none';
         container.style.opacity = '1';
+        isConfirmed = false;
       }, 10000);
     } else {
       alert('Fehler beim Speichern. Bitte erneut versuchen.');
@@ -332,6 +344,18 @@ form.addEventListener('submit', async function (e) {
     alert('Verbindung fehlgeschlagen: ' + error.message);
   }
 });
+
+cancelCheck.addEventListener("click", () => {
+  overlay.style.display = "none";
+  checkPopup.style.display = "none";
+});
+
+confirmCheck.addEventListener("click", () => {
+  checkPopup.style.display = "none";
+  isConfirmed = true;
+  form.requestSubmit(); // jetzt wirklich absenden
+});
+
   </script>
 </body>
 </html>
