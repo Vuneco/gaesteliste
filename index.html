@@ -208,6 +208,19 @@
   
   <div class="container">
   <h2 class="bordeaux">Jetzt zur Veranstaltung anmelden</h2>
+
+    <!-- Bestätigungsfenster -->
+<div id="checkPopup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%) scale(0.9);
+  background:#fff; border:2px solid #800000; border-radius:12px; padding:30px;
+  box-shadow:0 0 30px rgba(0,0,0,0.3); z-index:1001; width:90%; max-width:450px;
+  opacity:0; transition: all 0.3s ease;">
+  <p style="font-size:18px; margin-bottom:25px;">Sind Ihre Angaben richtig?</p>
+  <div style="display:flex; justify-content:space-between; gap:20px;">
+    <button id="cancelCheck" style="background:#f9a825; color:white; flex:1;">Abbrechen</button>
+    <button id="confirmCheck" style="background:#2e7d32; color:white; flex:1;">Anmelden</button>
+  </div>
+</div>
+    
   <form id="guestForm" action="https://script.google.com/macros/s/AKfycbxSHGLELPSVsK_mzi5bAkBcly64V3bbT_VdK2DSZeuAdwpnozk63iUUu3dJdnI89rwO1w/exec" method="POST">
 
     <!-- Vorname & Nachname nebeneinander -->
@@ -289,13 +302,44 @@
   </footer>
 
   <script>
-    const form = document.getElementById("guestForm");
+const form = document.getElementById("guestForm");
 const container = document.querySelector(".container");
 const confirmation = document.getElementById("confirmation");
 const overlay = document.getElementById("overlay");
+const checkPopup = document.getElementById("checkPopup");
+const cancelCheck = document.getElementById("cancelCheck");
+const confirmCheck = document.getElementById("confirmCheck");
 
-form.addEventListener('submit', async function (e) {
-  e.preventDefault();
+let formReadyToSend = false;
+
+form.addEventListener("submit", function (e) {
+  if (!formReadyToSend) {
+    e.preventDefault();
+    overlay.style.display = "block";
+    checkPopup.style.display = "block";
+
+    // animieren
+    setTimeout(() => {
+      checkPopup.style.opacity = "1";
+      checkPopup.style.transform = "translate(-50%, -50%) scale(1)";
+    }, 10);
+  }
+});
+
+cancelCheck.addEventListener("click", () => {
+  checkPopup.style.opacity = "0";
+  checkPopup.style.transform = "translate(-50%, -50%) scale(0.9)";
+  setTimeout(() => {
+    checkPopup.style.display = "none";
+    overlay.style.display = "none";
+  }, 300);
+});
+
+confirmCheck.addEventListener("click", async () => {
+  if (formReadyToSend) return;
+  formReadyToSend = true;
+  checkPopup.style.display = "none";
+
   const formData = new FormData(form);
 
   try {
@@ -307,22 +351,25 @@ form.addEventListener('submit', async function (e) {
     if (response.ok) {
       form.reset();
       container.style.opacity = '0.3';
-      overlay.style.display = 'block';
       confirmation.style.display = 'block';
 
       setTimeout(() => {
         confirmation.style.display = 'none';
         overlay.style.display = 'none';
         container.style.opacity = '1';
+        formReadyToSend = false;
       }, 10000);
     } else {
       alert('Fehler beim Speichern. Bitte erneut versuchen.');
+      formReadyToSend = false;
     }
   } catch (error) {
     alert('Verbindung fehlgeschlagen: ' + error.message);
+    formReadyToSend = false;
   }
 });
-  </script>
+</script>
+
 </body>
 </html>
 
