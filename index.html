@@ -191,14 +191,6 @@
     font-size: 15px;
   }
 }
-    .fade-out {
-  animation: fadeOut 0.3s ease forwards;
-}
-
-@keyframes fadeOut {
-  0% { opacity: 1; transform: scale(1); }
-  100% { opacity: 0; transform: scale(0.95); }
-}
     
   </style>
 </head>
@@ -216,7 +208,7 @@
   
   <div class="container">
   <h2 class="bordeaux">Jetzt zur Veranstaltung anmelden</h2>
-  <form id="guestForm" action="https://script.google.com/macros/s/AKfycbxSHGLELPSVsK_mzi5bAkBcly64V3bbT_VdK2DSZeuAdwpnozk63iUUu3dJdnI89rwO1w/exec" method="POST">
+  <form id="guestForm" action="https://script.google.com/macros/s/AKfycbzPeTRjiyOunan2xg5cgWZSpW9aM49RfdCJJu_kqLsj0Hd0fJTOZ9m6NZ_NZFwAWbw/exec" method="POST">
 
     <!-- Vorname & Nachname nebeneinander -->
     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
@@ -229,8 +221,7 @@
 <div style="display: flex; flex-direction: column; gap: 10px;">
   <input type="email" name="email" placeholder="E-Mail" required />
 
-  <label for="abiturSelect" style="font-weight: bold; margin-bottom: 5px; display: block;">Abiturjahrgang:</label>
-<select name="abitur" id="abiturSelect" required style="
+  <select name="abitur" required placeholder="Abiturjahrgang" style="
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -239,7 +230,7 @@
   background-color: #fff;
   color: #333;
 ">
-  <option value="" disabled selected>Bitte wählen</option>
+  <option value="" disabled selected hidden>Abiturjahrgang</option>
   <option value="2024">2024</option>
   <option value="2025">2025</option>
   <option value="2026">2026</option>
@@ -254,23 +245,14 @@
     <label><input type="radio" name="rolle" value="Lehrkraft / Personal" required /> Lehrkraft / Personal</label>
   </div>
 </div>
-  <input type="number" name="anzahl" placeholder="Anzahl Personen" required style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #800000; font-size: 16px; color: #555;">
+
+  <input type="number" name="anzahl" placeholder="Anzahl Personen" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #800000; font-size: 16px; color: #555;">
 </div>
 
     <!-- Hinweis -->
     <p style="font-size: 12px; color: #555; margin-top: 16px; margin-bottom: 0;">
       Wenn Sie auf „Jetzt anmelden“ tippen, erklären Sie sich damit einverstanden, dass Ihre Daten in die Gästeliste des St. Michael Gymnasiums gespeichert werden.
     </p>
-
-    <!-- Bestätigungsfenster -->
-<div id="checkPopup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%);
-  background:#fff; padding:30px; border-radius:12px; box-shadow:0 0 30px rgba(0,0,0,0.2); z-index:1001; max-width:90%; width:400px; text-align:center;">
-  <p style="font-size:18px;">Sind alle Angaben korrekt<br>oder möchten Sie etwas ändern?</p>
-  <div style="display:flex; justify-content:space-between; margin-top:25px;">
-    <button id="cancelCheck" style="background:#c62828; color:white; width:48%;">Abbrechen</button>
-    <button id="confirmCheck" style="background:#2e7d32; color:white; width:48%;">Anmelden</button>
-  </div>
-</div>
 
     <!-- Button -->
     <button type="submit">Jetzt anmelden</button>
@@ -311,13 +293,9 @@
 const container = document.querySelector(".container");
 const confirmation = document.getElementById("confirmation");
 const overlay = document.getElementById("overlay");
-const checkPopup = document.getElementById("checkPopup");
-const cancelCheck = document.getElementById("cancelCheck");
-const confirmCheck = document.getElementById("confirmCheck");
 
-let isConfirmed = false;
-
-async function actuallySubmitForm() {
+form.addEventListener('submit', async function (e) {
+  e.preventDefault();
   const formData = new FormData(form);
 
   try {
@@ -329,6 +307,7 @@ async function actuallySubmitForm() {
     if (response.ok) {
       form.reset();
       container.style.opacity = '0.3';
+      overlay.style.display = 'block';
       confirmation.style.display = 'block';
 
       setTimeout(() => {
@@ -342,33 +321,8 @@ async function actuallySubmitForm() {
   } catch (error) {
     alert('Verbindung fehlgeschlagen: ' + error.message);
   }
-}
-    
-  form.addEventListener("submit", function (e) {
-  e.preventDefault();
-  overlay.style.display = "block";
-  checkPopup.style.display = "block";
 });
-
-    cancelCheck.addEventListener("click", () => {
-  checkPopup.classList.add("fade-out");
-
-  setTimeout(() => {
-    checkPopup.style.display = "none";
-    checkPopup.classList.remove("fade-out");
-    overlay.style.display = "none";
-  }, 300);
-});
-
-confirmCheck.addEventListener("click", () => {
-  checkPopup.style.display = "none";
-  overlay.style.display = "block"; // bleibt aktiv beim Absenden
-  actuallySubmitForm(); // ruft die echte Submission-Funktion auf
-});
-
   </script>
 </body>
 </html>
-
-
 
