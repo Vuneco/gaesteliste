@@ -234,7 +234,7 @@
 <div style="display: flex; flex-direction: column; gap: 10px;">
   <input type="email" name="email" placeholder="E-Mail" required />
 
-  <select name="abitur" required placeholder="Abiturjahrgang" style="
+  <select id="abiturSelect" name="abitur" required style="
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -244,10 +244,6 @@
   color: #333;
 ">
   <option value="" disabled selected hidden>Abiturjahrgang</option>
-  <option value="2024">2024</option>
-  <option value="2025">2025</option>
-  <option value="2026">2026</option>
-  <option value="2027">2027</option>
 </select>
 
 <!-- Auswahl: Ich bin -->
@@ -368,6 +364,17 @@ confirmCheck.addEventListener("click", async () => {
     formReadyToSend = false;
   }
 });
+
+const abiturSelect = document.getElementById("abiturSelect");
+const currentYear = new Date().getFullYear();
+
+for (let year = currentYear; year >= 1945; year--) {
+  const option = document.createElement("option");
+  option.value = year;
+  option.textContent = year;
+  abiturSelect.appendChild(option);
+}
+    
 </script>
 
 </body>
