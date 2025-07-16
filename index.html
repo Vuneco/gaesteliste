@@ -243,7 +243,7 @@
   </div>
 </div>
     
-  <form id="guestForm" action="https://script.google.com/macros/s/AKfycbxSHGLELPSVsK_mzi5bAkBcly64V3bbT_VdK2DSZeuAdwpnozk63iUUu3dJdnI89rwO1w/exec" method="POST">
+  <form id="guestForm" method="POST"> //sendet an die adressen, die weiter unten aufgeführt werden!
     
     <!-- Vorname & Nachname nebeneinander -->
     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
@@ -329,6 +329,10 @@ const checkPopup = document.getElementById("checkPopup");
 const cancelCheck = document.getElementById("cancelCheck");
 const confirmCheck = document.getElementById("confirmCheck");
 
+// ✨ Hier deine 2 Ziel-URLs
+const mainURL = "https://script.google.com/macros/s/AKfycbxSHGLELPSVsK_mzi5bAkBcly64V3bbT_VdK2DSZeuAdwpnozk63iUUu3dJdnI89rwO1w/exec";
+const backupURL = "https://script.google.com/macros/s/AKfycbwmKkAXbDAHFzwe5fc4D9qX_sJXhDUj5gmgzGs6tPaJDkFzzjCsBVWApt40k-Oiu2UVgw/exec";
+
 let formReadyToSend = false;
 
 form.addEventListener("submit", function (e) {
@@ -362,26 +366,28 @@ confirmCheck.addEventListener("click", async () => {
   const formData = new FormData(form);
 
   try {
-    const response = await fetch(form.action, {
+    // Hauptziel
+    await fetch(mainURL, {
       method: 'POST',
       body: formData,
     });
 
-    if (response.ok) {
-      form.reset();
-      container.style.opacity = '0.3';
-      confirmation.style.display = 'block';
+    // Backupziel
+    await fetch(backupURL, {
+      method: 'POST',
+      body: formData,
+    });
 
-      setTimeout(() => {
-        confirmation.style.display = 'none';
-        overlay.style.display = 'none';
-        container.style.opacity = '1';
-        formReadyToSend = false;
-      }, 10000);
-    } else {
-      alert('Fehler beim Speichern. Bitte erneut versuchen.');
+    form.reset();
+    container.style.opacity = '0.3';
+    confirmation.style.display = 'block';
+
+    setTimeout(() => {
+      confirmation.style.display = 'none';
+      overlay.style.display = 'none';
+      container.style.opacity = '1';
       formReadyToSend = false;
-    }
+    }, 10000);
   } catch (error) {
     alert('Verbindung fehlgeschlagen: ' + error.message);
     formReadyToSend = false;
