@@ -337,12 +337,13 @@
 
     <!-- Button -->
     <button type="submit">Jetzt anmelden</button>
-
-    <div style="margin-top: 1rem; text-align: center;">
-  <a href="#" onclick="openPrivacyOverlay()" style="font-size: 0.85rem; color: #ccc; text-decoration: underline;">
-    Datenschutzerklärung anzeigen
-  </a>
+    
+    <div style="text-align: center; margin-top: 1rem;">
+  <a href="#" onclick="openImpressumOverlay()" style="font-size: 0.85rem; margin-right: 1rem; text-decoration: underline; color: #999;">Impressum</a>
+  |
+  <a href="#" onclick="openPrivacyOverlay()" style="font-size: 0.85rem; margin-left: 1rem; text-decoration: underline; color: #999;">Datenschutzerklärung</a>
 </div>
+
 
     <!-- Hinweis -->
 <p style="font-size: 13px; color: #800000; margin-top: 6px; margin-bottom: 0;">
@@ -379,12 +380,15 @@
   <a href="https://vuneco.com" target="_blank" style="display:inline-block;">
     <img src="assets/VunecoBlackLogo512.png" alt="Vuneco Logo" style="height:50px; width:auto;">
   </a>
-    <p style="font-size: 0.85rem;">
-  <a href="#" onclick="openPrivacyOverlay()">Datenschutzerklärung</a>
-</p>
+    <div style="text-align: center; margin-top: 2rem;">
+  <a href="#" onclick="openImpressumOverlay()" style="font-size: 0.85rem; margin-right: 1rem; text-decoration: underline; color: #999;">Impressum</a>
+  |
+  <a href="#" onclick="openPrivacyOverlay()" style="font-size: 0.85rem; margin-left: 1rem; text-decoration: underline; color: #999;">Datenschutzerklärung</a>
+</div>
+
 </footer>
 
-  <script>
+    <script>
 const form = document.getElementById("guestForm");
 const container = document.querySelector(".container");
 const confirmation = document.getElementById("confirmation");
@@ -473,29 +477,45 @@ for (let year = currentYear; year >= 1945; year--) {
 </script>
 
     <!-- Datenschutz-Overlay -->
+<!-- Datenschutz Overlay -->
 <div id="privacyOverlay" class="overlay" style="display:none;">
   <div class="overlay-content privacy-content">
     <button class="overlay-close" onclick="closePrivacyOverlay()">Schließen</button>
     <h2>Datenschutzerklärung</h2>
-    <p>Der Schutz Ihrer persönlichen Daten ist uns sehr wichtig. Auf dieser Seite können sich ehemalige Schüler:innen und Lehrer:innen des St. Michael-Gymnasiums für das Jubiläumsfest anmelden.</p>
+
+    <p>Der Schutz Ihrer persönlichen Daten ist uns wichtig. Diese Website dient ausschließlich der Anmeldung zum Jubiläumsfest des St. Michael-Gymnasiums in Euskirchen.</p>
+
     <h3>1. Verantwortliche Stelle</h3>
-    <p>Vuneco GmbH<br>Rheder Straße 34, 53881 Euskirchen<br>E-Mail: info@vuneco.com <br>
-    St.Michael Gymnasium, Markt 11, 53902 Bad Münstereifel</p>
+    <p>St. Michael-Gymnasium<br>
+    Markt 11<br>
+    53902 Bad Münstereifel<br>
+    E-Mail: kontakt@stmg.de</p>
+
     <h3>2. Zweck der Datenverarbeitung</h3>
-    <p>Die erhobenen Daten (Name, E-Mail, Anzahl Gäste) dienen der Organisation des Jubiläumsfests <br>
-    und damit das St.Michael Gymnasium Sie bei Veränderungen oder wichtigen Hinweisen anschreiben kann.</p>
-    <h3>3. Datenempfänger</h3>
-    <p>Gespeichert in Google Sheets. Zugriff haben nur Verantwortliche des St.Michael Gymnasiums und Vuneco Admins.</p>
-    <h3>4. Speicherort und Dauer</h3>
-    <p>Daten werden spätestens 6 Monate nach dem Event gelöscht.</p>
-    <h3>5. Rechtsgrundlage</h3>
-    <p>Art. 6 Abs. 1 lit. a DSGVO – Ihre Einwilligung beim Klick auf „Anmelden“.</p>
-    <h3>6. Ihre Rechte</h3>
-    <p>Auskunft, Berichtigung, Löschung – schreiben Sie bitte an kontakt@stmg.de</p>
-    <h3>7. Keine Weitergabe an Dritte</h3>
-    <p>Ihre Daten werden nicht an Dritte weitergegeben oder verkauft.</p>
+    <p>Die abgefragten Daten (Name, E-Mail-Adresse, Anzahl der Begleitpersonen) werden zur Organisation der Veranstaltung benötigt. Wir verwenden Ihre Daten ausschließlich zur Planung des Fests und ggf. zur Kontaktaufnahme bei Änderungen oder Informationen.</p>
+
+    <h3>3. Rechtsgrundlage</h3>
+    <p>Die Verarbeitung erfolgt auf Grundlage Ihrer freiwilligen Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO. Mit dem Klick auf „Anmelden“ stimmen Sie dieser Verarbeitung zu.</p>
+
+    <h3>4. Speicherung und Zugriff</h3>
+    <p>Die Daten werden in einem durch Google bereitgestellten Cloud-Dokument (Google Sheets) gespeichert. Der Zugriff erfolgt nur durch ausgewählte Mitglieder des Organisationsteams / St.Michael Gymnasiums und der Vuneco GmbH als technischem Dienstleister.</p>
+
+    <h3>5. Speicherdauer</h3>
+    <p>Die Daten werden nach Ende der Veranstaltung gelöscht, spätestens jedoch sechs Monate nach dem Event.</p>
+
+    <h3>6. Weitergabe an Dritte</h3>
+    <p>Es erfolgt keine Weitergabe der Daten an Dritte außerhalb der oben genannten Zugriffsberechtigten. Die Daten werden nicht verkauft.</p>
+
+    <h3>7. Ihre Rechte</h3>
+    <p>Sie haben das Recht auf Auskunft, Berichtigung und Löschung Ihrer personenbezogenen Daten. Wenden Sie sich dazu bitte an: <a href="mailto:kontakt@stmg.de">Kontakt@stmg.de</a></p>
+
+    <h3>8. Technischer Betreiber</h3>
+    <p>Die technische Bereitstellung dieser Webseite erfolgt durch:<br>
+    <strong>Vuneco GmbH, Rheder Straße 34, 53881 Euskirchen</strong><br>
+    Geschäftsführer: Esat Vurcak</p>
   </div>
 </div>
+
 
 <script>
 function openPrivacyOverlay() {
@@ -515,6 +535,52 @@ function closePrivacyOverlay() {
   }, 400);
 }
 </script>
+
+    <script>
+function openImpressumOverlay() {
+  const overlay = document.getElementById('impressumOverlay');
+  overlay.style.display = 'flex';
+  overlay.querySelector('.privacy-content').style.animation = 'slideDown 0.5s ease';
+}
+
+function closeImpressumOverlay() {
+  const overlay = document.getElementById('impressumOverlay');
+  const content = overlay.querySelector('.privacy-content');
+  content.style.animation = 'slideUp 0.4s ease';
+
+  setTimeout(() => {
+    overlay.style.display = 'none';
+  }, 400);
+}
+</script>
+<!-- Impressum Overlay -->
+<!-- Impressum Overlay -->
+<div id="impressumOverlay" class="overlay" style="display:none;">
+  <div class="overlay-content privacy-content">
+    <button class="overlay-close" onclick="closeImpressumOverlay()">Schließen</button>
+    <h2>Impressum</h2>
+
+    <p><strong>Veranstalter und inhaltlich verantwortlich gemäß § 5 TMG:</strong><br>
+    St. Michael-Gymnasium<br>
+    Markt 11<br>
+    53902 Bad Münstereifel<br>
+    Deutschland<br>
+    E-Mail: kontakt@stmg.de</p>
+
+    <p><strong>Vertreten durch:</strong><br>
+    die Schulleitung des St. Michael-Gymnasiums</p>
+
+    <p><strong>Technische Umsetzung:</strong><br>
+    Vuneco GmbH<br>
+    Rheder Straße 34<br>
+    53881 Euskirchen<br>
+    E-Mail: info@vuneco.com<br>
+    Geschäftsführer: Esat Vurcak</p>
+
+    <p>Diese Website wurde im Auftrag des St. Michael-Gymnasiums durch die Vuneco GmbH technisch entwickelt und bereitgestellt.</p>
+  </div>
+</div>
+
 
     
 </body>
