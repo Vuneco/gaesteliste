@@ -516,8 +516,36 @@ for (let year = currentYear; year >= 1945; year--) {
   </div>
 </div>
 
+    <!-- Impressum Overlay -->
+<div id="impressumOverlay" class="overlay" style="display:none;">
+  <div class="overlay-content privacy-content">
+    <button class="overlay-close" onclick="closeImpressumOverlay()">Schließen</button>
+    <h2>Impressum</h2>
+
+    <p><strong>Veranstalter und inhaltlich verantwortlich gemäß § 5 TMG:</strong><br>
+    St. Michael-Gymnasium<br>
+    Markt 11<br>
+    53902 Bad Münstereifel<br>
+    Deutschland<br>
+    E-Mail: kontakt@stmg.de</p>
+
+    <p><strong>Vertreten durch:</strong><br>
+    die Schulleitung des St. Michael-Gymnasiums</p>
+
+    <p><strong>Technische Umsetzung:</strong><br>
+    Vuneco GmbH<br>
+    Rheder Straße 34<br>
+    53881 Euskirchen<br>
+    E-Mail: info@vuneco.com<br>
+    Geschäftsführer: Esat Vurcak</p>
+
+    <p>Diese Website wurde im Auftrag des St. Michael-Gymnasiums durch die Vuneco GmbH technisch entwickelt und bereitgestellt.</p>
+  </div>
+</div>
+
 
 <script>
+  
 function openPrivacyOverlay() {
   const overlay = document.getElementById('privacyOverlay');
   overlay.style.display = 'flex';
@@ -553,36 +581,8 @@ function closeImpressumOverlay() {
   }, 400);
 }
 </script>
-<!-- Impressum Overlay -->
-<!-- Impressum Overlay -->
-<div id="impressumOverlay" class="overlay" style="display:none;">
-  <div class="overlay-content privacy-content">
-    <button class="overlay-close" onclick="closeImpressumOverlay()">Schließen</button>
-    <h2>Impressum</h2>
 
-    <p><strong>Veranstalter und inhaltlich verantwortlich gemäß § 5 TMG:</strong><br>
-    St. Michael-Gymnasium<br>
-    Markt 11<br>
-    53902 Bad Münstereifel<br>
-    Deutschland<br>
-    E-Mail: kontakt@stmg.de</p>
-
-    <p><strong>Vertreten durch:</strong><br>
-    die Schulleitung des St. Michael-Gymnasiums</p>
-
-    <p><strong>Technische Umsetzung:</strong><br>
-    Vuneco GmbH<br>
-    Rheder Straße 34<br>
-    53881 Euskirchen<br>
-    E-Mail: info@vuneco.com<br>
-    Geschäftsführer: Esat Vurcak</p>
-
-    <p>Diese Website wurde im Auftrag des St. Michael-Gymnasiums durch die Vuneco GmbH technisch entwickelt und bereitgestellt.</p>
-  </div>
-</div>
-
-
-    
+   
 </body>
 </html>
 
