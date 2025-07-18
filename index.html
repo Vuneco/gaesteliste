@@ -190,6 +190,46 @@
     font-size: 15px;
   }
 }
+    /* Datenschutz Overlay */
+#privacyOverlay {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.85);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeInBox 0.5s ease;
+}
+
+.privacy-content {
+  background: white;
+  color: black;
+  padding: 2rem;
+  max-width: 800px;
+  width: 90%;
+  max-height: 80%;
+  overflow-y: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  animation: slideDown 0.5s ease;
+  position: relative;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-50px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(0); opacity: 1; }
+  to   { transform: translateY(-50px); opacity: 0; }
+}
+
     
   </style>
 </head>
@@ -332,6 +372,9 @@
   <a href="https://vuneco.com" target="_blank" style="display:inline-block;">
     <img src="assets/VunecoBlackLogo512.png" alt="Vuneco Logo" style="height:50px; width:auto;">
   </a>
+    <p style="font-size: 0.85rem;">
+  <a href="#" onclick="openPrivacyOverlay()">Datenschutzerklärung</a>
+</p>
 </footer>
 
   <script>
@@ -422,6 +465,51 @@ for (let year = currentYear; year >= 1945; year--) {
     
 </script>
 
+    <!-- Datenschutz-Overlay -->
+<div id="privacyOverlay" class="overlay" style="display:none;">
+  <div class="overlay-content privacy-content">
+    <button class="overlay-close" onclick="closePrivacyOverlay()">Schließen</button>
+    <h2>Datenschutzerklärung</h2>
+    <p>Der Schutz Ihrer persönlichen Daten ist uns sehr wichtig. Auf dieser Seite können sich ehemalige Schüler:innen und Lehrer:innen des St. Michael-Gymnasiums für das Jubiläumsfest anmelden.</p>
+    <h3>1. Verantwortliche Stelle</h3>
+    <p>Vuneco GmbH<br>Rheder Straße 34, 53881 Euskirchen<br>E-Mail: info@vuneco.com <br>
+    St.Michael Gymnasium, Markt 11, 53902 Bad Münstereifel</p>
+    <h3>2. Zweck der Datenverarbeitung</h3>
+    <p>Die erhobenen Daten (Name, E-Mail, Anzahl Gäste) dienen der Organisation des Jubiläumsfests <br>
+    und damit das St.Michael Gymnasium Sie bei Veränderungen oder wichtigen Hinweisen anschreiben kann.</p>
+    <h3>3. Datenempfänger</h3>
+    <p>Gespeichert in Google Sheets. Zugriff haben nur Verantwortliche des St.Michael Gymnasiums und Vuneco Admins.</p>
+    <h3>4. Speicherort und Dauer</h3>
+    <p>Daten werden spätestens 6 Monate nach dem Event gelöscht.</p>
+    <h3>5. Rechtsgrundlage</h3>
+    <p>Art. 6 Abs. 1 lit. a DSGVO – Ihre Einwilligung beim Klick auf „Anmelden“.</p>
+    <h3>6. Ihre Rechte</h3>
+    <p>Auskunft, Berichtigung, Löschung – schreiben Sie an info@vuneco.com</p>
+    <h3>7. Keine Weitergabe an Dritte</h3>
+    <p>Ihre Daten werden nicht an Dritte weitergegeben oder verkauft.</p>
+  </div>
+</div>
+
+<script>
+function openPrivacyOverlay() {
+  const overlay = document.getElementById('privacyOverlay');
+  overlay.style.display = 'flex';
+  overlay.querySelector('.privacy-content').style.animation = 'slideDown 0.5s ease';
+}
+
+function closePrivacyOverlay() {
+  const overlay = document.getElementById('privacyOverlay');
+  const content = overlay.querySelector('.privacy-content');
+  content.style.animation = 'slideUp 0.4s ease';
+
+  // Warte auf Animation, dann ausblenden
+  setTimeout(() => {
+    overlay.style.display = 'none';
+  }, 400);
+}
+</script>
+
+    
 </body>
 </html>
 
